@@ -1,0 +1,267 @@
+/* QR Code Component Styles */
+
+/* Text spacing and layout improvements */
+.qr-text-container {
+  line-height: 1.8;
+  word-spacing: 0.1em;
+  letter-spacing: 0.01em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.qr-text-container p {
+  margin: 0;
+  padding: 0.2rem 0;
+  display: block;
+  clear: both;
+}
+
+.qr-description-text {
+  max-width: 200px;
+  margin: 0 auto;
+  line-height: 1.8;
+  word-break: normal;
+  hyphens: none;
+  text-align: center;
+  padding: 0.5rem 0;
+}
+
+.qr-description-text p {
+  white-space: nowrap;
+  overflow: visible;
+  text-overflow: clip;
+  margin: 0.4rem 0;
+  padding: 0.2rem 0;
+  display: block;
+  height: auto;
+  min-height: 1.4em;
+  position: relative;
+  z-index: 1;
+}
+
+/* Additional spacing for better text separation */
+.qr-description-text p:first-child {
+  margin-bottom: 0.6rem;
+}
+
+.qr-description-text p:last-child {
+  margin-top: 0.6rem;
+}
+
+/* Animation for floating elements */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(3deg);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float.delay-500 {
+  animation-delay: 0.5s;
+}
+
+.animate-float.delay-1000 {
+  animation-delay: 1s;
+}
+
+.animate-float.delay-1500 {
+  animation-delay: 1.5s;
+}
+
+/* Glass effect for cards */
+.glass-card {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* QR Code container styles */
+.qr-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.qr-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.qr-container:hover::before {
+  left: 100%;
+}
+
+/* Custom scrollbar for modal */
+.qr-modal::-webkit-scrollbar {
+  width: 6px;
+}
+
+.qr-modal::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 3px;
+}
+
+.qr-modal::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+.qr-modal::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Button hover effects */
+.qr-button {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.qr-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.qr-button:hover::before {
+  left: 100%;
+}
+
+/* Style selector grid */
+.style-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  gap: 0.5rem;
+}
+
+.style-option {
+  aspect-ratio: 1;
+  border-radius: 0.5rem;
+  border: 2px solid transparent;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.style-option:hover {
+  transform: scale(1.05);
+  border-color: #e2e8f0;
+}
+
+.style-option.selected {
+  border-color: #3b82f6;
+  background-color: #eff6ff;
+}
+
+/* QR Code card animations */
+.qr-card {
+  transition: all 0.3s ease;
+}
+
+.qr-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Loading animation for download button */
+.download-loading {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .5;
+  }
+}
+
+/* Gradient text effect */
+.gradient-text {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .qr-modal {
+    margin: 1rem;
+    max-height: calc(100vh - 2rem);
+  }
+  
+  .style-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Print styles for QR codes */
+@media print {
+  .qr-container {
+    background: white !important;
+    color: black !important;
+  }
+  
+  .qr-card {
+    box-shadow: none !important;
+    border: 1px solid #000 !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .glass-card {
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px solid #000;
+  }
+  
+  .qr-button {
+    border: 2px solid currentColor;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .animate-float,
+  .qr-card,
+  .qr-button {
+    animation: none;
+    transition: none;
+  }
+}
+
+/* Dark mode support (if needed in future) */
+@media (prefers-color-scheme: dark) {
+  .glass-card {
+    background: rgba(30, 41, 59, 0.8);
+    color: white;
+  }
+}
