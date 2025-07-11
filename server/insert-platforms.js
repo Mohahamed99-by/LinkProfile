@@ -2,10 +2,10 @@ const mysql = require('mysql2/promise');
 require('dotenv').config();
 
 const dbConfig = {
-  host: process.env.DB_HOST || 'localhost',
-  user: process.env.DB_USER || 'root',
-  password: process.env.DB_PASSWORD || '',
-  database: process.env.DB_NAME || 'linkprofile_db',
+    host: process.env.DB_HOST || 'sql10.freesqldatabase.com	',
+  user: process.env.DB_USER || 'sql10789545',
+  password: process.env.DB_PASSWORD || 'tzm3B33mgj',
+  database: process.env.DB_NAME || 'sql10789545',
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0

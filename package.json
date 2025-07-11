@@ -11,10 +11,18 @@
     "install-all": "npm install && cd server && npm install && cd ../client && npm install",
     "start": "cd server && npm start"
   },
-  "keywords": ["social-links", "profile", "portfolio", "links"],
+  "keywords": [
+    "social-links",
+    "profile",
+    "portfolio",
+    "links"
+  ],
   "author": "LinkProfile Team",
   "license": "MIT",
   "devDependencies": {
     "concurrently": "^8.2.2"
+  },
+  "dependencies": {
+    "framer-motion": "^12.19.1"
   }
-} 
+}

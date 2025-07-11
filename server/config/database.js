@@ -1,10 +1,10 @@
 const mysql = require('mysql2/promise');
 
 const dbConfig = {
-  host: process.env.DB_HOST || 'localhost',
-  user: process.env.DB_USER || 'root',
-  password: process.env.DB_PASSWORD || '',
-  database: process.env.DB_NAME || 'linkprofile_db',
+   host: process.env.DB_HOST || 'sql10.freesqldatabase.com	',
+  user: process.env.DB_USER || 'sql10789545',
+  password: process.env.DB_PASSWORD || 'tzm3B33mgj',
+  database: process.env.DB_NAME || 'sql10789545',
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0
@@ -37,20 +37,22 @@ const connectDB = async () => {
 const createTables = async () => {
   try {
     // Users table
-    await pool.execute(`
-      CREATE TABLE IF NOT EXISTS users (
-        id INT PRIMARY KEY AUTO_INCREMENT,
-        username VARCHAR(50) UNIQUE NOT NULL,
-        email VARCHAR(100) UNIQUE NOT NULL,
-        password VARCHAR(255) NOT NULL,
-        bio TEXT,
-        profile_image VARCHAR(255),
-        theme ENUM('light', 'dark') DEFAULT 'light',
-        template ENUM('classic', 'modern', 'minimal', 'gradient', 'neon', 'cosmic', 'nature') DEFAULT 'classic',
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-      )
-    `);
+    
+  await pool.execute(`
+  CREATE TABLE IF NOT EXISTS users (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    bio TEXT,
+    profile_image VARCHAR(255),
+    theme ENUM('light', 'dark') DEFAULT 'light',
+    template ENUM('classic', 'modern', 'minimal', 'gradient', 'neon', 'cosmic', 'nature') DEFAULT 'classic',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT NULL
+  )
+`);
+
 
     // Platforms table
     await pool.execute(`
